@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" routerLink="/">Logo</a>
+
+  <!-- Links -->
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item" *ngIf="!is_logged_in">
+      <a class="nav-link" routerLink="/register">Register</a>
+    </li>
+    <li class="nav-item" *ngIf="!is_logged_in">
+      <a class="nav-link" routerLink="/login">Login</a>
+    </li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown" *ngIf="is_logged_in">
+      <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+        {{first_name+" "+last_name}}
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" (click)="logout()">Logout</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+<br/>

@@ -1,0 +1,120 @@
+<app-header></app-header>
+<div class="container">
+  <div class="alert alert-dismissible fade show" [ngClass]="alertClass" *ngIf="saved">
+    <button type="button" class="close" data-dismiss="alert" (click)="removeAlert()">
+      <span>&times;</span>
+    </button>
+    {{alertMessage}}
+  </div>
+</div>
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="card">
+      <div class="card-header">
+        <h5>Registration Form</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="">First Name</label>
+            <div class="mb-3">
+              <div class="input-group" [ngClass]="{'has-error': form.controls.first_name.errors && (form.controls.first_name.dirty || form.controls.first_name.touched),
+                'has-success': !form.controls.first_name.errors && (form.controls.first_name.dirty || form.controls.first_name.touched)}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" autocomplete="first_name" placeholder="Enter First Name" formControlName="first_name">
+              </div>
+              <show-errors [control]="form.controls.first_name"></show-errors>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="">Last Name</label>
+            <div class="mb-3">
+              <div class="input-group" [ngClass]="{'has-error': form.controls.last_name.errors && (form.controls.last_name.dirty || form.controls.last_name.touched),
+              'has-success': !form.controls.last_name.errors && (form.controls.last_name.dirty || form.controls.last_name.touched)}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" autocomplete="last_name" placeholder="Enter Last Name" formControlName="last_name">
+              </div>
+              <show-errors [control]="form.controls.last_name"></show-errors>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="">Email</label>
+            <div class="mb-3">
+              <div class="input-group" [ngClass]="{'has-error': form.controls.email.errors && (form.controls.email.dirty || form.controls.email.touched),
+              'has-success': !form.controls.email.errors && (form.controls.email.dirty || form.controls.email.touched)}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" autocomplete="email" placeholder="Enter Email" formControlName="email">
+              </div>
+              <show-errors [control]="form.controls.email"></show-errors>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="">Password</label>
+            <div class="mb-3">
+              <div class="input-group" [ngClass]="{'has-error': form.controls.password.errors && (form.controls.password.dirty || form.controls.password.touched),
+              'has-success': !form.controls.password.errors && (form.controls.password.dirty || form.controls.password.touched)}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                    <i class="fas fa-key"></i>
+                  </span>
+                </div>
+                <input type="password" class="form-control" autocomplete="password" placeholder="Enter Password" formControlName="password">
+              </div>
+              <show-errors [control]="form.controls.password"></show-errors>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="">Phone Number</label>
+            <div class="mb-3">
+              <div class="input-group" [ngClass]="{'has-error': form.controls.phone.errors && (form.controls.phone.dirty || form.controls.phone.touched),
+              'has-success': !form.controls.phone.errors && (form.controls.phone.dirty || form.controls.phone.touched)}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                    <i class="fas fa-phone"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" autocomplete="phone" placeholder="Enter Phone Number" formControlName="phone">
+              </div>
+              <show-errors [control]="form.controls.phone"></show-errors>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="">Address</label>
+            <div class="mb-3">
+              <div class="input-group" [ngClass]="{'has-error': form.controls.address.errors && (form.controls.address.dirty || form.controls.address.touched),
+              'has-success': !form.controls.address.errors && (form.controls.address.dirty || form.controls.address.touched)}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                    <i class="fas fa-address-card"></i>
+                  </span>
+                </div>
+                <textarea class="form-control" autocomplete="address" formControlName="address" rows="1" placeholder="Enter Your Address"></textarea>
+              </div>
+              <show-errors [control]="form.controls.address"></show-errors>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <button type="submit" [disabled]="!form.valid || submitted" class="btn btn-primary custom-button">
+          <i class="fas fa-cog fa-spin" style="margin-right:10px;" *ngIf="submitted"></i>Submit Details</button>
+      </div>
+    </div>
+  </form>
+</div>
